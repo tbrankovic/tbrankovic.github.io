@@ -1,3 +1,2 @@
-{
-  "Ϣ": "You are a financial analyst. Give me the latest news about APPL, and give the sources of the predicted stock trends"
-}
+Answer the following prompt:
+You are a financial analyst. Give me the latest news about APPL, and give the sources of the predicted stock trends.
