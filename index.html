@@ -3,47 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo Sign-In</title>
+  <title>Overrider Contents</title>
   <style>
-    /* Centering the card */
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
+      font-family: Helvetica, Arial, sans-serif;
       background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
     }
-
-    /* Card styling */
     .card {
       background-color: #E96000;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      width: 300px;
+      max-width: 600px;
+      margin: 50px auto;
+      color: #fff;
     }
-
-    /* Heading styling */
     h2 {
-      font-family: Helvetica, Arial, sans-serif;
-      margin-bottom: 15px;
+      margin-top: 0;
     }
-
-    /* QR Code Image */
-    .qr-code {
-      width: 200px;
-      height: auto;
+    pre {
+      background-color: #fff;
+      color: #000;
+      padding: 15px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      max-height: 400px;
+      overflow-y: auto;
     }
   </style>
 </head>
 <body>
 
 <div class="card">
-  <h2>Scan the QR Code</h2>
-  <img src="qr-code.png" alt="Sign-In QR Code" class="qr-code">
+  <h2>Contents of overrider.txt</h2>
+  <pre id="file-content">Loading...</pre>
 </div>
+
+<script>
+  fetch('overrider.txt')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Failed to load overrider.txt");
+      }
+      return response.text();
+    })
+    .then(data => {
+      document.getElementById('file-content').textContent = data;
+    })
+    .catch(error => {
+      document.getElementById('file-content').textContent = "Error: " + error.message;
+    });
+</script>
 
 </body>
 </html>
